@@ -5,11 +5,12 @@
 
 ## feature
 1. screen record
-2. support stripping environment volume
-3. support saving to album
-4. support for custom duration
-5. support for custom path and name
-6. resist the test of DAU 1 million users
+2. audio record
+3. support stripping environment volume
+4. support saving to album
+5. support for custom duration
+6. support for custom path and name
+7. resist the test of DAU 1 million users
 ## Screenshots
 
 ## How to use it
