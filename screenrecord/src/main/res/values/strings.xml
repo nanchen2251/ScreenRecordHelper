@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ScreenRecord</string>
+    <string name="phone_not_support_screen_record">sorry,your phone does not support recording screen</string>
+    <string name="permission_denied">Please agree to the authorization, otherwise you will not be able to record</string>
+    <string name="record_faild">Recording failed,please check according to the log!</string>
+    <string name="save_to_album_success">saved to album success</string>
+</resources>
