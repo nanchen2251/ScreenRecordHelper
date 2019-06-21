@@ -11,11 +11,11 @@
 #### Step 1. Add it in your root build.gradle at the end of repositories:
 ```groovy
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}       
 ```
 #### Step 2. Add the dependency
 ```groovy
@@ -71,12 +71,14 @@ stopRecord(duration, audioDuration, afdd)
 
 ### About the author
     nanchen<br>
-    Chengdu,China<br>
-    [my other project](https://github.com/nanchen2251/)<br>
-    [my blog](http://www.jianshu.com/u/f690947ed5a6)<br>
+    Chengdu,China<br>
+    [其它开源](https://github.com/nanchen2251/)<br>
+    [个人博客](https://nanchen2251.github.io/)<br>
+    [简书](http://www.jianshu.com/u/f690947ed5a6)<br>
+    [博客园](http://www.cnblogs.com/liushilin/)<br>
     交流群：118116509<br>
     欢迎投稿(关注)我的唯一公众号，公众号搜索 nanchen 或者扫描下方二维码：<br>
-    ![](https://github.com/nanchen2251/Blogs/blob/master/images/nanchen12.jpg) 
+    ![](https://github.com/nanchen2251/Blogs/blob/master/images/nanchen12.jpg)
     
 ## Licenses
 ```
