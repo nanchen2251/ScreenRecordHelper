@@ -44,7 +44,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 screenRecordHelper?.apply {
                     if (!isRecording) {
-                        recordAudio = true
+                        // 如果你想录制音频（一定会有环境音量），你可以打开下面这个限制,并且使用不带参数的 stopRecord()
+//                        recordAudio = true
                         startRecord()
                     }
                 }
