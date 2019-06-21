@@ -28,23 +28,7 @@ dependencies {
 ```kotlin
 // start screen record
 if (screenRecordHelper == null) {
-    screenRecordHelper = ScreenRecordHelper(this, object : ScreenRecordHelper.OnVideoRecordListener {
-        override fun onBeforeRecord() {
-        }
-
-        override fun onStartRecord() {
-
-        }
-
-        override fun onCancelRecord() {
-
-        }
-
-        override fun onEndRecord() {
-
-        }
-
-    }, PathUtils.getExternalStoragePath() + "/nanchen")
+    screenRecordHelper = ScreenRecordHelper(this, null, PathUtils.getExternalStoragePath() + "/nanchen")
 }
 screenRecordHelper?.apply {
     if (!isRecording) {
