@@ -26,7 +26,7 @@ allprojects {
 #### Step 2. Add the dependency
 ```groovy
 dependencies {
-    implementation 'com.github.nanchen2251:ScreenRecordHelper:1.0.1'
+    implementation 'com.github.nanchen2251:ScreenRecordHelper:1.0.2'
 }
 ```
 
@@ -38,6 +38,7 @@ if (screenRecordHelper == null) {
 }
 screenRecordHelper?.apply {
     if (!isRecording) {
+        // if you want to record the audio,you can set the recordAudio as true
         screenRecordHelper?.startRecord()
     }
 }
