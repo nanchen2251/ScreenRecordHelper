@@ -1,11 +1,14 @@
 # ScreenRecordHelper
 🔥screen record helper https://github.com/nanchen2251/ScreenRecordHelper
 
-## Screenshots
 
 ## feature
-  1. screen record
-  2. support stripping environment volume
+1. screen record
+2. support stripping environment volume
+3. support saving to album
+4. support for custom duration
+5. support for custom path and name
+## Screenshots
 
 ## How to use it
 #### Step 1. Add it in your root build.gradle at the end of repositories:
