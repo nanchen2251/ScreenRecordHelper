@@ -1,6 +1,7 @@
 # ScreenRecordHelper
 🔥screen record helper https://github.com/nanchen2251/ScreenRecordHelper
 
+[中文使用说明](https://github.com/nanchen2251/ScreenRecordHelper/blob/master/README_zh.md)
 
 ## feature
 1. screen record
