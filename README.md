@@ -8,6 +8,7 @@
 3. support saving to album
 4. support for custom duration
 5. support for custom path and name
+6. resist the test of DAU 1 million users
 ## Screenshots
 
 ## How to use it
