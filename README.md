@@ -1,7 +1,7 @@
 # ScreenRecordHelper
 🔥screen record helper https://github.com/nanchen2251/ScreenRecordHelper
 
-## Rendering<br>
+## Screenshots
 
 ## feature
   1. screen record
