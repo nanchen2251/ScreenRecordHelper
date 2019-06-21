@@ -1,4 +1,4 @@
-package com.nanchen.screenrecord;
+package com.nanchen.screenrecordhelper;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

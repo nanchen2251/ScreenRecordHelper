@@ -1,4 +1,4 @@
-package com.nanchen.screenrecord
+package com.nanchen.screenrecordhelper
 
 import android.app.Activity
 import android.content.Context
@@ -30,7 +30,7 @@ import java.nio.ByteBuffer
  * Date: 2019/6/21 15:19
  */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class ScreenRecorder @JvmOverloads constructor(
+class ScreenRecordHelper @JvmOverloads constructor(
         private var activity: Activity,
         private val listener: OnVideoRecordListener?,
         private var savePath: String = Environment.getExternalStorageDirectory().absolutePath + File.separator
@@ -328,7 +328,7 @@ class ScreenRecorder @JvmOverloads constructor(
     companion object {
         private const val VIDEO_FRAME_RATE = 30
         private const val REQUEST_CODE = 1024
-        private const val TAG = "ScreenRecorder"
+        private const val TAG = "ScreenRecordHelper"
     }
 
     interface OnVideoRecordListener {

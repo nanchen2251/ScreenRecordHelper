@@ -9,12 +9,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.blankj.utilcode.util.PathUtils
-import com.nanchen.screenrecord.ScreenRecorder
+import com.nanchen.screenrecordhelper.ScreenRecordHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var screenRecorder: ScreenRecorder? = null
+    private var screenRecordHelper: ScreenRecordHelper? = null
     private val afdd: AssetFileDescriptor by lazy { assets.openFd("test.aac") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         btnStart.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                if (screenRecorder == null) {
-                    screenRecorder = ScreenRecorder(this, object : ScreenRecorder.OnVideoRecordListener {
+                if (screenRecordHelper == null) {
+                    screenRecordHelper = ScreenRecordHelper(this, object : ScreenRecordHelper.OnVideoRecordListener {
                         override fun onBeforeRecord() {
                         }
 
@@ -42,9 +42,9 @@ class MainActivity : AppCompatActivity() {
 
                     }, PathUtils.getExternalStoragePath() + "/nanchen")
                 }
-                screenRecorder?.apply {
+                screenRecordHelper?.apply {
                     if (!isRecording) {
-                        screenRecorder?.startRecord()
+                        screenRecordHelper?.startRecord()
                     }
                 }
             } else {
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         btnStop.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                screenRecorder?.apply {
+                screenRecordHelper?.apply {
                     if (isRecording) {
                         if (mediaPlayer != null) {
                             stopRecord(mediaPlayer!!.duration.toLong(), 15 * 1000, afdd)
@@ -98,13 +98,13 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && data != null) {
-            screenRecorder?.onActivityResult(requestCode, resultCode, data)
+            screenRecordHelper?.onActivityResult(requestCode, resultCode, data)
         }
     }
 
     override fun onDestroy() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            screenRecorder?.clearAll()
+            screenRecordHelper?.clearAll()
         }
         afdd.close()
         super.onDestroy()

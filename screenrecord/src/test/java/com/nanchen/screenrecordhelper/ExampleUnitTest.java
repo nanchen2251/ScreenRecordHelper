@@ -1,4 +1,4 @@
-package com.nanchen.screenrecord;
+package com.nanchen.screenrecordhelper;
 
 import org.junit.Test;
 
