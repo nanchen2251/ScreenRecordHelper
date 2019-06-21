@@ -44,7 +44,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 screenRecordHelper?.apply {
                     if (!isRecording) {
-                        screenRecordHelper?.startRecord()
+                        recordAudio = true
+                        startRecord()
                     }
                 }
             } else {
@@ -57,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                 screenRecordHelper?.apply {
                     if (isRecording) {
                         if (mediaPlayer != null) {
+                            // 如果选择带参数的 stop 方法，则录制音频无效
                             stopRecord(mediaPlayer!!.duration.toLong(), 15 * 1000, afdd)
                         } else {
                             stopRecord()

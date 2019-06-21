@@ -45,6 +45,7 @@ class ScreenRecordHelper @JvmOverloads constructor(
     private val displayMetrics by lazy { DisplayMetrics() }
     private var saveFile: File? = null
     var isRecording = false
+    var recordAudio = false
 
     init {
         activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -145,10 +146,13 @@ class ScreenRecordHelper @JvmOverloads constructor(
         }
     }
 
-    fun stopRecord(audioDuration: Long = 0, videoDuration: Long = 0, afdd: AssetFileDescriptor? = null) {
+    /**
+     * if you has parameters, the recordAudio will be invalid
+     */
+    fun stopRecord(videoDuration: Long = 0, audioDuration: Long = 0, afdd: AssetFileDescriptor? = null) {
         stop()
-        if (videoDuration != 0L && afdd != null) {
-            syntheticAudio(audioDuration, videoDuration, afdd)
+        if (audioDuration != 0L && afdd != null) {
+            syntheticAudio(videoDuration, audioDuration, afdd)
         } else {
             // saveFile
             if (saveFile != null) {
@@ -193,15 +197,21 @@ class ScreenRecordHelper @JvmOverloads constructor(
         val width = Math.min(displayMetrics.widthPixels, 1080)
         val height = Math.min(displayMetrics.heightPixels, 1920)
         mediaRecorder?.apply {
-            this.setVideoSource(MediaRecorder.VideoSource.SURFACE)
-            this.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-            this.setVideoEncoder(MediaRecorder.VideoEncoder.H264)
-            this.setOutputFile(saveFile!!.absolutePath)
-            this.setVideoSize(width, height)
-            this.setVideoEncodingBitRate(8388608)
-            this.setVideoFrameRate(VIDEO_FRAME_RATE)
+            if (recordAudio) {
+                setAudioSource(MediaRecorder.AudioSource.MIC)
+            }
+            setVideoSource(MediaRecorder.VideoSource.SURFACE)
+            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+            setVideoEncoder(MediaRecorder.VideoEncoder.H264)
+            if (recordAudio){
+                setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+            }
+            setOutputFile(saveFile!!.absolutePath)
+            setVideoSize(width, height)
+            setVideoEncodingBitRate(8388608)
+            setVideoFrameRate(VIDEO_FRAME_RATE)
             try {
-                this.prepare()
+                prepare()
                 virtualDisplay = mediaProjection?.createVirtualDisplay("MainScreen", width, height, displayMetrics.densityDpi,
                         DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR, surface, null, null)
                 Log.d(TAG, "initRecorder 成功")
@@ -228,7 +238,7 @@ class ScreenRecordHelper @JvmOverloads constructor(
      * https://stackoverflow.com/questions/31572067/android-how-to-mux-audio-file-and-video-file
      */
     private fun syntheticAudio(audioDuration: Long, videoDuration: Long, afdd: AssetFileDescriptor) {
-        Log.d(TAG,"start syntheticAudio")
+        Log.d(TAG, "start syntheticAudio")
         val newFile = File(savePath, "$saveName.mp4")
         if (newFile.exists()) {
             newFile.delete()
