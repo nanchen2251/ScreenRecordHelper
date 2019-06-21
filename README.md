@@ -4,8 +4,8 @@
 ## Rendering<br>
 
 ## feature
-  1、screen record<br>
-  2、support stripping environment volume<br>
+  1. screen record
+  2. support stripping environment volume
 
 ## How to use it
 #### Step 1. Add it in your root build.gradle at the end of repositories:
@@ -33,15 +33,15 @@ if (screenRecordHelper == null) {
         }
 
         override fun onStartRecord() {
-            play()
+
         }
 
         override fun onCancelRecord() {
-            releasePlayer()
+
         }
 
         override fun onEndRecord() {
-            releasePlayer()
+
         }
 
     }, PathUtils.getExternalStoragePath() + "/nanchen")
