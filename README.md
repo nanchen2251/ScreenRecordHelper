@@ -42,6 +42,14 @@ screenRecordHelper?.apply {
         screenRecordHelper?.startRecord()
     }
 }
+
+// You must rewrite the onActivityResult
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && data != null) {
+        screenRecordHelper?.onActivityResult(requestCode, resultCode, data)
+    }
+}
     
 // just stop screen record
 screenRecordHelper?.apply {
