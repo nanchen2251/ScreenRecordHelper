@@ -39,7 +39,13 @@ screenRecordHelper?.apply {
         screenRecordHelper?.startRecord()
     }
 }
-    
+// 你必须重写 onActivityResult 方法，否则会发现申请录屏后没有回调
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && data != null) {
+        screenRecordHelper?.onActivityResult(requestCode, resultCode, data)
+    }
+}    
 // 直接停止录屏，不做音频剪辑处理
 screenRecordHelper?.apply {
     if (isRecording) {
